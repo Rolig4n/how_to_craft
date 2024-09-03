@@ -29,10 +29,14 @@ h1 {
 
 /* Estiliza as seções da página */
 section {
-    display: flex; /* Usa Flexbox para layout */
+    display: grid;
     align-items: center; /* Centraliza os itens horizontalmente */
     justify-content: center;
     margin-bottom: 3rem; /* Espaçamento abaixo de cada seção */
+}
+
+#pesquisa{
+    display: flex; /* Usa Flexbox para layout */
 }
 
 /* Estiliza os inputs dentro das seções */
@@ -79,6 +83,7 @@ section button:active {
     width: 60rem; /* Largura máxima da caixa de resultados */
     height: 46vh; /* Altura máxima da caixa de resultados */
     overflow-y: auto; /* Adiciona rolagem vertical se necessário */
+    align-items: flex-start;
     margin-top: 1rem; /* Espaçamento acima da caixa de resultados */
     padding: 1rem; /* Espaçamento interno */
     border-radius: 0.6rem; /* Borda arredondada */
@@ -86,7 +91,8 @@ section button:active {
 
 /* Estiliza cada item de resultado */
 .item-resultado {
-    background: #FFFFFF; /* Cor de fundo dos itens */
+    display: -webkit-box;
+    background: #c6c6c6; /* Cor de fundo dos itens */
     border-radius: 0.6rem; /* Borda arredondada */
     padding: 1rem; /* Espaçamento interno */
     margin-bottom: 1rem; /* Espaçamento abaixo dos itens */
@@ -97,17 +103,18 @@ section button:active {
 .item-resultado h2 {
     font-size: 1.5rem; /* Tamanho da fonte */
     color: #222831; /* Cor do texto */
+    align-content: center;
 }
 
 /* Estiliza os links dentro dos itens de resultado */
-.item-resultado a, a {
+a {
     text-decoration: none; /* Remove o sublinhado padrão dos links */
     text-shadow: 2px 2px #202013CC;    
 	color: #DDD;
 }
 
 /* Estiliza os links quando são passados o mouse sobre */
-.item-resultado a:hover, a:hover {
+a:hover {
     text-decoration: none; /* Adiciona sublinhado ao passar o mouse */
     color: #FFFFA0;
 }
@@ -118,6 +125,26 @@ section button:active {
     margin: 0.5rem 0; /* Margem acima e abaixo */
 }
 
+/* CSS que cria a ilusão da crafting table */
+#craft {
+    width: 120px;
+    margin: 0 10px 0 10px;
+}
+.craft-slot {
+    background-color: #8b8b8b;
+    box-shadow: 1px 0px 0 #FFFFFF70, -2px 0px 0 #ffffff70, inset 2px 2px 0 #373737a6, inset -2px -2px 0 #ffffff;
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+.craft-result {
+    background-color: #8b8b8b;
+    box-shadow: 1px 0px 0 #FFFFFF70, -2px 0px 0 #ffffff70, inset 2px 2px 0 #373737a6, inset -2px -2px 0 #ffffff;
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    float: left;
+}
 /* Estiliza o rodapé da página */
 footer {
     background: #999;
