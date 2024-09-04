@@ -130,20 +130,22 @@ a:hover {
     width: 120px;
     margin: 0 10px 0 10px;
 }
-.craft-slot {
+.craft {
+    display: grid;
+    align-content: center;
+    justify-content: center;
     background-color: #8b8b8b;
     box-shadow: 1px 0px 0 #FFFFFF70, -2px 0px 0 #ffffff70, inset 2px 2px 0 #373737a6, inset -2px -2px 0 #ffffff;
-    width: 40px;
-    height: 40px;
     float: left;
 }
-.craft-result {
-    background-color: #8b8b8b;
-    box-shadow: 1px 0px 0 #FFFFFF70, -2px 0px 0 #ffffff70, inset 2px 2px 0 #373737a6, inset -2px -2px 0 #ffffff;
+.slot {
+    width: 40px;
+    height: 40px;
+}
+.result {
     width: 50px;
     height: 50px;
     margin-left: 10px;
-    float: left;
 }
 /* Estiliza o rodapé da página */
 footer {
