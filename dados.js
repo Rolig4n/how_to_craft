@@ -17,3 +17,4 @@ async function getItems() {
 }
 
 let dados = getRecipes()
+let items = getItems()
