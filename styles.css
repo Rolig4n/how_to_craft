@@ -132,6 +132,8 @@ a:hover {
 }
 .craft {
     display: grid;
+    color: #FFF;
+    text-shadow: 2px 2px #000A;
     align-content: center;
     justify-content: center;
     background-color: #8b8b8b;
@@ -146,6 +148,20 @@ a:hover {
     width: 50px;
     height: 50px;
     margin-left: 10px;
+}
+.result span {
+    z-index: 1;
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    margin: 8px 0px 0px 20px;
+}
+.craft-arrow {
+    display: inline-block;
+    background: url("assets/Grid_layout_Arrow_\(small\).png") no-repeat;
+    width: 32px;
+    height: 26px;
+    margin: 45px 4px 0;
 }
 /* Estiliza o rodapé da página */
 footer {
