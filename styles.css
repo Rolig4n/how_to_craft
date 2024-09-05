@@ -147,14 +147,13 @@ a:hover {
 .result {
     width: 50px;
     height: 50px;
+    position: relative;
     margin-left: 10px;
 }
 .result span {
-    z-index: 1;
-    text-align: center;
-    line-height: 50px;
     position: absolute;
-    margin: 8px 0px 0px 20px;
+    top: 40%;
+    left: 40%;
 }
 .craft-arrow {
     display: inline-block;
