@@ -32,13 +32,26 @@ section {
     display: grid;
     align-items: center; /* Centraliza os itens horizontalmente */
     justify-content: center;
-    margin-bottom: 3rem; /* Espaçamento abaixo de cada seção */
 }
 
 #pesquisa{
     display: flex; /* Usa Flexbox para layout */
 }
-
+#space_top {
+    z-index: 1;
+    position: absolute;
+    background: linear-gradient(to bottom, #DDD, 30%, transparent);
+    height: 3rem;
+    width: 60rem;
+}
+#space_bot {
+    z-index: 1;
+    position: absolute;
+    background: linear-gradient(to bottom, transparent, 50%, #DDD);
+    height: 1rem;
+    width: 60rem;
+    margin-top: -1rem;
+}
 /* Estiliza os inputs dentro das seções */
 section input,
 section button {
@@ -84,14 +97,30 @@ section button:active {
     height: 46vh; /* Altura máxima da caixa de resultados */
     overflow-y: auto; /* Adiciona rolagem vertical se necessário */
     align-items: flex-start;
-    margin-top: 1rem; /* Espaçamento acima da caixa de resultados */
     padding: 1rem; /* Espaçamento interno */
     border-radius: 0.6rem; /* Borda arredondada */
 }
 
+/* Estilização da barra de rolagem */
+.resultados-pesquisa::-webkit-scrollbar {
+    width: 20px; /* Largura da barra */
+}
+.resultados-pesquisa::-webkit-scrollbar-track {
+    background-color: #8b8b8b; /* Cor de fundo da trilha */
+    box-shadow: 1px 0px 0 #FFFFFF70, -2px 0px 0 #ffffff70, inset 2px 2px 0 #373737a6, inset -2px -2px 0 #ffffff;
+}
+.resultados-pesquisa::-webkit-scrollbar-thumb {
+    background-color: #c6c6c6; /* Cor da parte deslizante */
+    box-shadow: inset -2px -2px 0 #545454, inset 2px 2px 0 #ffffff;
+}
+
 /* Estiliza cada item de resultado */
+.div-resultado {
+    display: inline-flex;
+}
 .item-resultado {
-    display: -webkit-box;
+    display: flex;
+    justify-content: space-between;
     background: #c6c6c6; /* Cor de fundo dos itens */
     border-radius: 0.6rem; /* Borda arredondada */
     padding: 1rem; /* Espaçamento interno */
@@ -153,7 +182,7 @@ a:hover {
 .result span {
     position: absolute;
     top: 40%;
-    left: 40%;
+    right: 10%;
 }
 .craft-arrow {
     display: inline-block;
@@ -164,7 +193,7 @@ a:hover {
 }
 /* Estiliza o rodapé da página */
 footer {
-    background: #999;
+    background-color: #999;
 	color: #DDD;
     text-align: center; /* Alinha o texto ao centro */
     padding: 0; /* Espaçamento interno */
