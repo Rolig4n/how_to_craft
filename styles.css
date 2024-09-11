@@ -170,13 +170,14 @@ a:hover {
     box-shadow: 1px 0px 0 #FFFFFF70, -2px 0px 0 #ffffff70, inset 2px 2px 0 #373737a6, inset -2px -2px 0 #ffffff;
     float: left;
 }
-.craft img {
+.craft a {
+    display: block;
+    position: relative;
     cursor: pointer; /* Muda o cursor para um ponteiro quando o mouse passa por cima */
 }
-.tooltip {
-    visibility: hidden;
-    position: absolute;
-    transform: translateX(10%)translateY(-80%);
+.title {
+    position: absolute; /* must have this */
+    transform: translateY(-80%);
     background-color: #1b0c1bf0;
     color: #FFF;
     text-shadow: 2px 2px #3f3f3f;
@@ -184,13 +185,7 @@ a:hover {
     padding: 0px 2px 2px 2px;
     border: 2px solid #240550;
     border-radius: 3px;
-    opacity: 0;
-    z-index: 2;
-    transition: opacity 0.3s; /* Adiciona uma transição suave para o efeito de aparecer/desaparecer */
-}
-.craft:hover .tooltip {
-    visibility: visible;
-    opacity: 1; /* Mostra o tooltip quando o mouse está sobre a receita */
+    z-index: 1000;
 }
 .slot {
     width: 40px;
@@ -203,6 +198,7 @@ a:hover {
     margin-left: 10px;
 }
 .result .qtd {
+    z-index: 2;
     position: absolute;
     top: 40%;
     right: 10%;

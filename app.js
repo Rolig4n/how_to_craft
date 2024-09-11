@@ -26,7 +26,7 @@ function getCraftingItemImage(recipe, itemLista) {
                     if (recipe[i][j] !== null) { 
                         const sub_item = itemLista.find(item => item.name === recipe[i][j]);
                         if (sub_item) {
-                            subRecipeList += `<img src="${sub_item.image}"><span class="tooltip">${sub_item.name}</span>`
+                            subRecipeList += `<a href="#" class="tooltip" title="${sub_item.name}"><img src="${sub_item.image}"></a>`
                         }
                     } else {
                         subRecipeList += ''
@@ -36,7 +36,7 @@ function getCraftingItemImage(recipe, itemLista) {
             } else {
                 const item = itemLista.find(item => item.name === recipe[i]);
                 if (item) {
-                    recipeList += `<div class="craft slot"><img src="${item.image}"><span class="tooltip">${item.name}</span></div>`;
+                    recipeList += `<div class="craft slot"><a href="#" class="tooltip" title="${item.name}"><img src="${item.image}"></a></div>`;
                 }
             }
         }
@@ -51,7 +51,7 @@ function getItemImage(item, itensLista) {
     for (let j = 0; j < itensLista.length; j++) {
         const iten = itensLista.find(iten => iten.name === item);
         if (iten) {
-            return `<img src="${iten.image}"><span class="tooltip">${iten.name}</span>`;
+            return `<a href="#" class="tooltip" title="${iten.name}"><img src="${iten.image}"></a>`;
         }
     }
 }
@@ -94,6 +94,36 @@ async function pesquisar() {
     } else {
         section.innerHTML = craftingList
     }
+    $( function() {
+        function onHoverToggleTooltip( e ) {
+            var $this	= $( this ),
+                title	= $this.attr( 'title' ),
+                type	= e.type,
+                offset 	= $this.offset(),
+                xOffset = e.pageX - offset.left,
+                yOffset = e.pageY - offset.top - 10,
+                yOffset = e.pageZ - offset.top;
+            if( type == 'mouseenter' ) {
+                $this.data( 'tipText', title ).removeAttr( 'title' );
+                $this.append( '<span class="title">' + title + '</span>' ).hide().fadeIn(250);
+                $this.find ( '.title' )
+                    .css( 'top', ( yOffset ) + 'px' )
+                    .css( 'left', ( xOffset ) + 'px' );
+            } else if ( type == 'mouseleave' ) {
+                $this.attr( 'title', $this.data( 'tipText' ) );
+                $this.find ( '.title' ).fadeOut().remove();
+            } else if ( type == 'mousemove' ) {
+                $this.find ( '.title' )
+                    .css( 'top', ( yOffset ) + 'px' )
+                    .css( 'left', ( xOffset ) + 'px' );
+            }
+        }
+        $( document.querySelectorAll( '.tooltip' ) ).on({ 
+            mouseenter: onHoverToggleTooltip, 
+            mouseleave: onHoverToggleTooltip, 
+            mousemove: onHoverToggleTooltip
+        });
+    });
     slides = document.querySelectorAll(".slide")
     setInterval(nextSlide, 2000)
 }
