@@ -18,17 +18,15 @@ function normalizeString(str) {
 
 function getCraftingItemImage(recipe, itemLista) {
     let recipeList = ""
-    let pesquisa = ""
     for (let i = 0; i < recipe.length; i++) {
         if (recipe[i] !== null) {
             if (Array.isArray(recipe[i])) {
                 let subRecipeList = ""
                 for (let j = 0; j < recipe[i].length; j++) {
-                    if (recipe[i][j] !== null) {   
-                        pesquisa = recipe[i][j]
-                        const sub_item = itemLista.find(item => item.name === pesquisa);
+                    if (recipe[i][j] !== null) { 
+                        const sub_item = itemLista.find(item => item.name === recipe[i][j]);
                         if (sub_item) {
-                            subRecipeList += `<img src="${sub_item.image}"></img>`
+                            subRecipeList += `<img src="${sub_item.image}"><span class="tooltip">${sub_item.name}</span>`
                         }
                     } else {
                         subRecipeList += ''
@@ -36,10 +34,9 @@ function getCraftingItemImage(recipe, itemLista) {
                 }
                 recipeList += `<div class="craft slot carousel"><div class="slide">${subRecipeList}</div></div>`;
             } else {
-                pesquisa = recipe[i]
-                const item = itemLista.find(item => item.name === pesquisa);
+                const item = itemLista.find(item => item.name === recipe[i]);
                 if (item) {
-                    recipeList += `<div class="craft slot"><img src="${item.image}"></div>`;
+                    recipeList += `<div class="craft slot"><img src="${item.image}"><span class="tooltip">${item.name}</span></div>`;
                 }
             }
         }
@@ -54,7 +51,7 @@ function getItemImage(item, itensLista) {
     for (let j = 0; j < itensLista.length; j++) {
         const iten = itensLista.find(iten => iten.name === item);
         if (iten) {
-            return `<img src="${iten.image}"></img>`;
+            return `<img src="${iten.image}"><span class="tooltip">${iten.name}</span>`;
         }
     }
 }
@@ -85,7 +82,7 @@ async function pesquisar() {
                         <span class="craft-arrow"></span>
                     </div>
                     <div style="align-content: center;">
-                        <div class="craft result">${craft.quantity > 1 ? `<span>${craft.quantity}</span>` : ''}${getItemImage(craft.item, itens)}</div>
+                        <div class="craft result">${craft.quantity > 1 ? `<span class="qtd">${craft.quantity}</span>` : ''}${getItemImage(craft.item, itens)}</div>
                     </div>
                 </div>
             </div>
